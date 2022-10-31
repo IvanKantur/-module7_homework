@@ -1,12 +1,12 @@
-const obj = {
-    name: "John",
-    city: "Boston",
-    age: 30
+const person = {
+    name: "Anna",
+    age: 23
 };
 
 const str = "age";
 
 function isTheKey(obj, str){
-    console.log((str in obj)? true : false)
+    console.log(str  in obj);
+
 }
-isTheKey(obj, str);
+isTheKey(person, str)
