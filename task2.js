@@ -1,12 +1,6 @@
-const obj = {
-    name: "John",
-    city: "Boston",
-    age: 30
-};
-
-const str = "age";
-
-function isTheKey(obj, str){
-    console.log((str in obj)? true : false)
+function createObj(){
+    const emptyObj = Object.create(null);
+    return emptyObj;
 }
-isTheKey(obj, str);
+
+createObj();
