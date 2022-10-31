@@ -1,36 +1,37 @@
-function ElectricalAppliance(name){
-    this.type = 'electrical',
-    this.name = name
+function ElectricalAppliance(name, power){
+    this.name = name,
+        this.power = power,
+        this.isPlugged = false
 }
-
+// Метод, который определяет, что прибор включён в розетку
 ElectricalAppliance.prototype.isOn = function(){
-    console.log(`${this.name} is ON`)
+    console.log(`${this.name} is ON`);
+    this.isPlugged = true;
 }
-
+// Метод, который определяет, что прибор выключен из розетки
 ElectricalAppliance.prototype.isOff = function(){
-    console.log(`${this.name} is OFF`)
+    console.log(`${this.name} is OFF`);
+    this.isPlugged = false;
 }
 
-function HighPower(name, power){
-    this.name = name,
-    this.power = power,
-    this.powerfull = "high"
-};
+class Computer extends ElectricalAppliance {
+    constructor (name, brand, power) {
+        super(name, power);
+        this.brand = brand;
+        this.isPlugged = true;
+    }
+}
 
-function LowPower(name, power){
-    this.name = name,
-    this.power = power,
-    this.powerfull = "low"
-};
+class Lamp extends ElectricalAppliance {
+    constructor(name, brand, power) {
+        super(name, power);
+        this.brand = brand;
+        this.isPlugged = true;
+    }
+}
 
-HighPower.prototype = new ElectricalAppliance()
-LowPower.prototype = new ElectricalAppliance()
-
-const iron = new HighPower('iron', '2000 W');
-const lamp = new LowPower('lamp', '100 W');
-const radio = new LowPower('radio', '340 W');
-
-iron.isOn();
-iron.isOff();
-lamp.isOff();
-console.log(radio);
+const laptop = new Computer("laptop", "msi", 1900);
+const kitchinLamp = new Lamp("kitchenLapm", "Philips", 100);
+laptop.isOn()
+kitchinLamp.isOff()
+console.log(laptop, kitchinLamp)
